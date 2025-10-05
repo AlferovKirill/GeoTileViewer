@@ -51,6 +51,10 @@
         <source>Set</source>
         <translation>Установить</translation>
     </message>
+    <message>
+        <source>View type</source>
+        <translation>Тип отображения</translation>
+    </message>
 </context>
 <context>
     <name>Main</name>
@@ -89,6 +93,155 @@
     <message>
         <source>Homepage:</source>
         <translation>Домашняя страница:</translation>
+    </message>
+</context>
+<context>
+    <name>QGeoTiledMappingManagerEngineGooglemaps</name>
+    <message>
+        <source>Road Map</source>
+        <translation>Дорожная карта</translation>
+    </message>
+    <message>
+        <source>Normal map view in daylight mode</source>
+        <translation>Обычный вид карты в дневном режиме</translation>
+    </message>
+    <message>
+        <source>Satellite</source>
+        <translation>Спутник</translation>
+    </message>
+    <message>
+        <source>Satellite map view in daylight mode</source>
+        <translation>Просмотр спутниковой карты в дневном режиме</translation>
+    </message>
+    <message>
+        <source>Terrain</source>
+        <translation>Местность</translation>
+    </message>
+    <message>
+        <source>Terrain map view in daylight mode</source>
+        <translation>Просмотр карты местности в дневном режиме</translation>
+    </message>
+    <message>
+        <source>Hybrid</source>
+        <translation>Гибрид</translation>
+    </message>
+    <message>
+        <source>Satellite map view with streets in daylight mode</source>
+        <translation>Просмотр спутниковой карты с улицами в дневном режиме</translation>
+    </message>
+</context>
+<context>
+    <name>QPlaceManagerEngineGooglemaps</name>
+    <message>
+        <source>Aeroway</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Amenity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Building</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Highway</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Historic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Land use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leisure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Man made</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Natural</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Place</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Railway</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tourism</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Waterway</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network request error</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QPlaceSearchReplyGooglemaps</name>
+    <message>
+        <source>Communication error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Response parse error</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QtLocationQML</name>
+    <message>
+        <source>Qt Location requires app_id and token parameters.
+Please register at https://developer.here.com/ to get your personal application credentials.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saving places is not supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing places is not supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saving categories is not supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing categories is not supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error parsing response.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Request was canceled.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The response from the service was not in a recognizable format.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
