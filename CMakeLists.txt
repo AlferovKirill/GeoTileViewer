@@ -24,6 +24,8 @@ target_compile_features(project_warnings INTERFACE cxx_std_17)
 
 # ---- Declare library ----
 
+find_package(GeographicLib REQUIRED)
+find_package(Qt6Keychain REQUIRED)
 find_package(Qt6 6.5 REQUIRED COMPONENTS
     Core
     Gui
@@ -32,6 +34,7 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS
     LinguistTools
     Location
     Positioning
+    DBus
 )
 
 set(CMAKE_AUTOUIC ON)
@@ -46,6 +49,8 @@ add_library(GeoTileViewer_lib OBJECT ${LIB_SOURCES})
 target_include_directories(GeoTileViewer_lib ${warning_guard} PUBLIC "\$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/source>")
 
 target_link_libraries(GeoTileViewer_lib PRIVATE project_warnings)
+target_link_libraries(GeoTileViewer_lib PUBLIC ${GeographicLib_LIBRARIES})
+target_link_libraries(GeoTileViewer_lib PUBLIC qt6keychain)
 target_link_libraries(GeoTileViewer_lib PUBLIC
     Qt6::Core
     Qt6::Gui
@@ -53,6 +58,7 @@ target_link_libraries(GeoTileViewer_lib PUBLIC
     Qt6::QuickControls2
     Qt6::Location
     Qt6::Positioning
+    Qt6::DBus
 )
 
 # ---- Declare executable ----

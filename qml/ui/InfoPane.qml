@@ -2,6 +2,8 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import ui
+
 Pane {
     id: root
 
@@ -17,6 +19,8 @@ Pane {
 
     property double referencedLatitude
     property double referencedLongitude
+
+    property var utmCoordinates: CoordinatesConverter.fromWGS84toUTM(root.referencedLatitude, root.referencedLongitude)
 
     width: mainLayout.contentWidth
     height: mainLayout.contentHeight
@@ -47,7 +51,7 @@ Pane {
         anchors.fill: parent
 
         Label {
-            text: qsTr("Referenced сoordinates (WGS84)")
+            text: qsTr("Referenced coordinates (WGS84)")
             font.bold: true
 
             Layout.fillWidth: true
@@ -71,6 +75,48 @@ Pane {
             Label { text: qsTr("Longitude:") }
             Label {
                 text: Number(root.referencedLongitude).toFixed(6)
+                horizontalAlignment: Text.AlignRight
+
+                Layout.fillWidth: true
+            }
+        }
+        Label {
+            text: qsTr("Referenced coordinates (UTM)")
+            font.bold: true
+
+            Layout.fillWidth: true
+        }
+        RowLayout {
+            spacing: 8
+            Layout.fillWidth: true
+
+            Label { text: qsTr("UTM zone:") }
+            Label {
+                text: root.utmCoordinates[0] + (root.utmCoordinates[1] ? "N" : "S")
+                horizontalAlignment: Text.AlignRight
+
+                Layout.fillWidth: true
+            }
+        }
+        RowLayout {
+            spacing: 8
+            Layout.fillWidth: true
+
+            Label { text: qsTr("Easting:") }
+            Label {
+                text: root.utmCoordinates[2].toFixed(3)
+                horizontalAlignment: Text.AlignRight
+
+                Layout.fillWidth: true
+            }
+        }
+        RowLayout {
+            spacing: 8
+            Layout.fillWidth: true
+
+            Label { text: qsTr("Northing:") }
+            Label {
+                text: root.utmCoordinates[3].toFixed(3)
                 horizontalAlignment: Text.AlignRight
 
                 Layout.fillWidth: true
