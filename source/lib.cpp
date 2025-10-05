@@ -1,8 +1,3 @@
 #include "lib.hpp"
 
-#include <fmt/core.h>
-
-library::library()
-    : name {fmt::format("{}", "GeoTileViewer")}
-{
-}
+Library::Library() : name {"GeoTileViewer"} {}

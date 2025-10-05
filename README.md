@@ -13,7 +13,7 @@ The application is a windowed Qt application for Linux that downloads and displa
 
 ## Requirements
 
-- Qt 6.x.x or later.
+- Qt 6.5 or later.
 - Internet connection for downloading maps.
 - Compilation and execution on Linux.
 

@@ -1,9 +1,7 @@
-#include <catch2/catch_test_macros.hpp>
-
 #include "lib.hpp"
 
-TEST_CASE("Name is GeoTileViewer", "[library]")
+auto main() -> int
 {
-  auto const lib = library {};
-  REQUIRE(lib.name == "GeoTileViewer");
+  auto const lib = Library {};
+  return lib.name == "GeoTileViewer" ? 0 : 1;
 }
