@@ -12,8 +12,8 @@ ApplicationWindow {
 
     visible: true
 
-    width: 800
-    height: 600
+    width: 1200
+    height: 900
 
     minimumWidth: 196
     minimumHeight: 128
@@ -65,26 +65,18 @@ ApplicationWindow {
     Plugin {
         id: mapPlugin
         name: "osm"
-        // name: "itemsoverlay"
     }
 
     Map {
         id: map
-
-        // Moscow
-        readonly property double kLatitude: 55.7558
-        readonly property double kLongitude: 37.6173
-
-        property double referencedLatitude: kLatitude
-        property double referencedLongitude: kLongitude
 
         property geoCoordinate startCentroid
 
         anchors.fill: parent
 
         plugin: mapPlugin
-        center: QtPositioning.coordinate(kLatitude, kLongitude)
-        zoomLevel: 14
+        center: QtPositioning.coordinate(infoPane.k_latitude, infoPane.k_longitude)
+        zoomLevel: infoPane.zoom
 
         PinchHandler {
             id: pinch
@@ -137,8 +129,8 @@ ApplicationWindow {
                 var coord = map.toCoordinate(Qt.point(mouseX, mouseY))
 
                 if (coord.isValid) {
-                    map.referencedLatitude = coord.latitude
-                    map.referencedLongitude = coord.longitude
+                    infoPane.referencedLatitude = coord.latitude
+                    infoPane.referencedLongitude = coord.longitude
                 }
             }
         }
@@ -146,14 +138,16 @@ ApplicationWindow {
     InfoPane {
         id: infoPane
 
-        referencedLatitude: map.referencedLatitude
-        referencedLongitude: map.referencedLongitude
-
         anchors {
             top: parent.top
             right: parent.right
 
             margins: 12
+        }
+
+        onSetNewCoordinates: {
+            map.center = QtPositioning.coordinate(infoPane.latitude, infoPane.longitude)
+            map.zoomLevel = infoPane.zoom
         }
     }
 
