@@ -45,6 +45,7 @@ export MAPS_ACCESS_TOKEN=some_very_secret_token
 
 ## Demonstration
 https://github.com/user-attachments/assets/2c76a8f2-65d4-43d4-a11c-dc454c89c9b4
+
 https://github.com/user-attachments/assets/d9d13ee0-e4af-4631-9bc5-d02897bb81d6
 
 # Building and installing
