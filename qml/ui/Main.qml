@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import QtCore
 import QtLocation
 import QtPositioning
 
@@ -64,7 +65,32 @@ ApplicationWindow {
 
     Plugin {
         id: mapPlugin
-        name: "osm"
+        name: "googlemaps"
+
+        PluginParameter {
+            name: "googlemaps.useragent"
+            value: Qt.application.name
+        }
+        PluginParameter {
+            name: "googlemaps.cachefolder"
+            value: maps_cache_path
+        }
+        PluginParameter {
+            name: "googlemaps.route.apikey"
+            value: maps_access_token
+        }
+        PluginParameter {
+            name: "googlemaps.maps.apikey"
+            value: maps_access_token
+        }
+        PluginParameter {
+            name: "googlemaps.geocode.apikey"
+            value: maps_access_token
+        }
+        PluginParameter {
+            name: "googlemaps.maps.tilesize"
+            value: "256"
+        }
     }
 
     Map {
@@ -138,6 +164,8 @@ ApplicationWindow {
     InfoPane {
         id: infoPane
 
+        supportedMapTypes: map.supportedMapTypes
+
         anchors {
             top: parent.top
             right: parent.right
@@ -145,6 +173,9 @@ ApplicationWindow {
             margins: 12
         }
 
+        onSetNewViewType: (index) => {
+            map.activeMapType = map.supportedMapTypes[index]
+        }
         onSetNewCoordinates: {
             map.center = QtPositioning.coordinate(infoPane.latitude, infoPane.longitude)
             map.zoomLevel = infoPane.zoom

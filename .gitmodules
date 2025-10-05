@@ -1,0 +1,3 @@
+[submodule "external/google_maps"]
+	path = external/google_maps
+	url = https://github.com/vladest/googlemaps.git

@@ -19,6 +19,8 @@ The application is a windowed Qt application for Linux that downloads and displa
 - Internet connection for downloading maps;
 - Compilation and execution on Linux.
 
+Also this project has a submodule `google_maps` that provides a plugin for Google Maps. This dependency is located in the external folder, and you can read more about it there. Also, keep in mind that you will need your own API key for Google Maps. You can set it using environment variables, as shown in the example below.
+
 ## Tips
 
 - Install Qt of the required version (>= 6.5) using the official Qt installer;

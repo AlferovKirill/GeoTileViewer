@@ -26,6 +26,9 @@ Pane {
 
     property var utmReferencedCoordinates: CoordinatesConverter.fromWGS84toUTM(root.referencedLatitude, root.referencedLongitude)
 
+    property var supportedMapTypes
+
+    signal setNewViewType(index: int)
     signal setNewCoordinates
 
     function newCoordinatesHandler() {
@@ -71,6 +74,22 @@ Pane {
         spacing: 8
         anchors.fill: parent
 
+        Label {
+            text: qsTr("View type")
+            font.bold: true
+
+            Layout.fillWidth: true
+        }
+        ComboBox {
+            model: root.supportedMapTypes
+            textRole: "name"
+
+            Layout.fillWidth: true
+
+            onCurrentIndexChanged: {
+                root.setNewViewType(currentIndex)
+            }
+        }
         Label {
             text: qsTr("Referenced coordinates (WGS84)")
             font.bold: true
