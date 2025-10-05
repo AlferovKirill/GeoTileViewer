@@ -13,10 +13,35 @@ The application is a windowed Qt application for Linux that downloads and displa
 
 ## Requirements
 
-- Qt 6.5 or later.
-- `libgeographiclib-dev`
-- Internet connection for downloading maps.
+- Qt 6.5 or later;
+- `qtkeychain-qt6-dev`;
+- `libgeographiclib-dev`;
+- Internet connection for downloading maps;
 - Compilation and execution on Linux.
+
+## Tips
+
+- Install Qt of the required version (>= 6.5) using the official Qt installer;
+- Install some other libraries from the official package manager, like this:
+
+``` bash
+sudo apt install qtkeychain-qt6-dev
+sudo apt install libgeographiclib-dev
+```
+
+- For the `libgeographiclib-dev` library, you may need to add a symbolic link to another folder. Find out the CMake version first and then make a symbolic link to the specific version;
+
+``` bash
+cmake --version
+sudo ln -s /usr/share/cmake/geographiclib/FindGeographicLib.cmake /usr/share/cmake-3.XX/Modules/
+```
+
+- Pass the environment variables in a way that is convenient for you. For example, add the following to the end of the ~/.bashrc file and reboot after.
+
+``` bash
+export LD_LIBRARY_PATH=~/Qt/6.5.3/gcc_64/lib:$LD_LIBRARY_PATH
+export MAPS_ACCESS_TOKEN=some_very_secret_token
+```
 
 # Building and installing
 

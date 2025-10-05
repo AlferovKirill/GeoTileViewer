@@ -7,20 +7,41 @@ import ui
 Pane {
     id: root
 
-    readonly property real k_zoom: 10
+    // Moscow
+    readonly property real k_latitude: 55.7558
+    readonly property real k_longitude: 37.6173
+
+    readonly property real k_zoom: 14
 
     readonly property real min_zoom: 1
     readonly property real max_zoom: 100
 
     property real zoom: k_zoom
 
-    property double latitude
-    property double longitude
+    property real latitude: k_latitude
+    property real longitude: k_longitude
 
-    property double referencedLatitude
-    property double referencedLongitude
+    property real referencedLatitude: k_latitude
+    property real referencedLongitude: k_longitude
 
-    property var utmCoordinates: CoordinatesConverter.fromWGS84toUTM(root.referencedLatitude, root.referencedLongitude)
+    property var utmReferencedCoordinates: CoordinatesConverter.fromWGS84toUTM(root.referencedLatitude, root.referencedLongitude)
+
+    signal setNewCoordinates
+
+    function newCoordinatesHandler() {
+        root.latitude = Number(latitudeTextField.text)
+        root.longitude = Number(longitudeTextField.text)
+        root.zoom = Number(zoomTextField.text)
+
+        root.setNewCoordinates()
+    }
+    function resetCoordinatesHandler() {
+        root.latitude = root.k_latitude
+        root.longitude = root.k_longitude
+        root.zoom = root.k_zoom
+
+        root.setNewCoordinates()
+    }
 
     width: mainLayout.contentWidth
     height: mainLayout.contentHeight
@@ -92,7 +113,19 @@ Pane {
 
             Label { text: qsTr("UTM zone:") }
             Label {
-                text: root.utmCoordinates[0] + (root.utmCoordinates[1] ? "N" : "S")
+                text: root.utmReferencedCoordinates[0]
+                horizontalAlignment: Text.AlignRight
+
+                Layout.fillWidth: true
+            }
+        }
+        RowLayout {
+            spacing: 8
+            Layout.fillWidth: true
+
+            Label { text: qsTr("Pole:") }
+            Label {
+                text: root.utmReferencedCoordinates[1] ? "N" : "S"
                 horizontalAlignment: Text.AlignRight
 
                 Layout.fillWidth: true
@@ -104,7 +137,7 @@ Pane {
 
             Label { text: qsTr("Easting:") }
             Label {
-                text: root.utmCoordinates[2].toFixed(3)
+                text: root.utmReferencedCoordinates[2].toFixed(3)
                 horizontalAlignment: Text.AlignRight
 
                 Layout.fillWidth: true
@@ -116,10 +149,117 @@ Pane {
 
             Label { text: qsTr("Northing:") }
             Label {
-                text: root.utmCoordinates[3].toFixed(3)
+                text: root.utmReferencedCoordinates[3].toFixed(3)
                 horizontalAlignment: Text.AlignRight
 
                 Layout.fillWidth: true
+            }
+        }
+        Rectangle {
+            color: systemPalette.dark
+
+            height: 2
+            radius: height / 2
+
+            Layout.fillWidth: true
+        }
+        Label {
+            text: qsTr("Set coordinates")
+            font.bold: true
+
+            Layout.fillWidth: true
+        }
+        RowLayout {
+            spacing: 8
+            Layout.fillWidth: true
+
+            Label {
+                text: qsTr("Latitude:")
+                Layout.preferredWidth: 110
+            }
+            TextField {
+                id: latitudeTextField
+                
+                text: root.latitude
+                validator: DoubleValidator {
+                    locale: "en_US"
+                    notation: DoubleValidator.StandardNotation
+                }
+                
+                Layout.fillWidth: true
+
+                onAccepted: {
+                    root.newCoordinatesHandler()
+                }
+            }
+        }
+        RowLayout {
+            spacing: 8
+            Layout.fillWidth: true
+
+            Label {
+                text: qsTr("Longitude:")
+                Layout.preferredWidth: 110
+            }
+            TextField {
+                id: longitudeTextField
+
+                text: root.longitude
+                validator: DoubleValidator {
+                    locale: "en_US"
+                    notation: DoubleValidator.StandardNotation
+                }
+                
+                Layout.fillWidth: true
+
+                onAccepted: {
+                    root.newCoordinatesHandler()
+                }
+            }
+        }
+        RowLayout {
+            spacing: 8
+            Layout.fillWidth: true
+
+            Label {
+                text: qsTr("Zoom:")
+                Layout.preferredWidth: 110
+            }
+            TextField {
+                id: zoomTextField
+
+                text: root.zoom
+                validator: DoubleValidator {
+                    locale: "en_US"
+                    notation: DoubleValidator.StandardNotation
+                }
+
+                Layout.fillWidth: true
+
+                onAccepted: {
+                    root.newCoordinatesHandler()
+                }
+            }
+        }
+        RowLayout {
+            spacing: 8
+            Layout.fillWidth: true
+
+            Button {
+                text: qsTr("Reset")
+                Layout.fillWidth: true
+
+                onClicked: {
+                    root.resetCoordinatesHandler()
+                }
+            }
+            Button {
+                text: qsTr("Set")
+                Layout.fillWidth: true
+
+                onClicked: {
+                    root.newCoordinatesHandler()
+                }
             }
         }
     }
