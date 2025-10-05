@@ -46,9 +46,9 @@ export MAPS_ACCESS_TOKEN=some_very_secret_token
 ```
 
 ## Demonstration
-https://github.com/user-attachments/assets/2c76a8f2-65d4-43d4-a11c-dc454c89c9b4
 
-https://github.com/user-attachments/assets/d9d13ee0-e4af-4631-9bc5-d02897bb81d6
+<img width="3066" height="1854" alt="Image" src="https://github.com/user-attachments/assets/a7e8862d-ff5f-4649-ac68-77f06dbe6ef1" />
+<img width="3066" height="1854" alt="Image" src="https://github.com/user-attachments/assets/8f242e5c-d367-4f4e-9398-d75d43f8fa4b" />
 
 # Building and installing
 
