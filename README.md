@@ -14,6 +14,7 @@ The application is a windowed Qt application for Linux that downloads and displa
 ## Requirements
 
 - Qt 6.5 or later.
+- `libgeographiclib-dev`
 - Internet connection for downloading maps.
 - Compilation and execution on Linux.
 

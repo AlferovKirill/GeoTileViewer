@@ -5,6 +5,8 @@ import QtQuick.Layouts
 import QtLocation
 import QtPositioning
 
+import ui
+
 ApplicationWindow {
     id: root
 
@@ -63,6 +65,7 @@ ApplicationWindow {
     Plugin {
         id: mapPlugin
         name: "osm"
+        // name: "itemsoverlay"
     }
 
     Map {
@@ -167,7 +170,6 @@ ApplicationWindow {
 
         ColumnLayout {
             spacing: 8
-            anchors.fill: parent
 
             Text {
                 text: qsTr("Author: ") + Qt.application.organization
